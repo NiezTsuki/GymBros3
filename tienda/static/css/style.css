@@ -1,0 +1,72 @@
+.logo-img {
+  width: 150px;
+}
+
+.fuente {
+  font-family: "Anton", sans-serif;
+  font-size: 25px;
+}
+
+.footer {
+  position: relative;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.micarrito {
+  width: 30px;
+}
+
+col {
+  display: flex;
+  align-items: center;
+}
+
+.contenedor {
+  text-align: center;
+}
+
+.c-item {
+  height: 480px;
+}
+
+.c-img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+
+.nav-link {
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  /*border-bottom: 2px solid white;*/
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.card {
+  height: -100;
+}
+
+/*# sourceMappingURL=style.css.map */
