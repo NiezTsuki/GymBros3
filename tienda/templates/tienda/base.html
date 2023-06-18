@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Bro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static './img/favicon.png'%}">
+
+
+</head>
+<nav class="navbar navbar-expand-lg bg-danger fuente" style="font-size: 23px;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png'%}" alt="logo"
+                width="120" height="120"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        PRODUCTOS
+                    </a>
+                    <ul class="dropdown-menu" style="font-size: 18px;">
+                        <li><a class="dropdown-item" href="{% url 'categoria' 'MS' %}">Mancuernas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'categoria' 'BO' %}">Barras Olímpicas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'categoria' 'DO' %}">Discos Olímpicos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'categoria' 'MC' %}">Máquinas Cardio</a></li>
+                        <li><a class="dropdown-item" href="{% url 'categoria' 'BR' %}">Bancas y Racks</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black" aria-current="page" href="mantenciones.html">MANTENCIONES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black" aria-current="page"
+                        href="asesoramiento.html">ASESORAMIENTO</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">USUARIO</a>
+                <ul class="dropdown-menu" style="font-size: 18px;" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                    <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item mx-2">
+                <a href="#" class="nav-link text-black">CARRO 4</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="#" class="nav-link text-black">LISTA DE DESESOS 4</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="#" class="nav-link text-black">INICIAR SESIÓN</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="#" class="nav-link text-black">REGISTRARSE</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+    {% block main-content %}{% endblock main-content %}
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row bg-danger">
+                <div class="col-md-3 mt-4">
+                    <h4 class="text-black">Sobre Nosotros</h4>
+                    <p class="text-black">En nuestra tienda nos enorgullece ofrecer una amplia variedad de productos de
+                        alta calidad para ayudarte a lograr tus metas. Ya sea que busques artículos de entrenamiento de
+                        fuerza, cardio, accesorios deportivos, nuestro catálogo cuenta con todo lo que necesitas para
+                        llevar tu entrenamiento al siguiente nivel.</p>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <h4 class="text-black">Contacto</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i>
+                                Dudas</a></li>
+                        <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i>
+                                Mantenciones</a></li>
+                        <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i>
+                                Asesoramiento</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <h4 class="text-black">Síguenos</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="link-light"><i class="fab fa-facebook link-light"></i> Facebook</a></li>
+                        <li><a href="#" class="link-light"><i class="fab fa-twitter link-light"></i> Twitter</a></li>
+                        <li><a href="#" class="link-light"><i class="fab fa-instagram link-light"></i> Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center text-light m-4">
+                        <p>&copy; 2023 GymBros. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./main.js" type="module"></script>
+    <script src="validaciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD7WXSovGxDgYyScig3kSbUV5le1blaO-E",
+            authDomain: "gym-bros-cf1e4.firebaseapp.com",
+            projectId: "gym-bros-cf1e4",
+            storageBucket: "gym-bros-cf1e4.appspot.com",
+            messagingSenderId: "817133230214",
+            appId: "1:817133230214:web:6406684a3ca79bb90fd907"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
+
+</body>
+
+</html>

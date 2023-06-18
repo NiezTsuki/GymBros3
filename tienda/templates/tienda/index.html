@@ -1,248 +1,84 @@
+{% extends "tienda/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Bro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="{% static './img/favicon.png'%}">
 
-</head>
-<body>
-  <nav class="fuente">
-    <nav class="navbar navbar-expand-lg bg-danger">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img src="{% static 'img/logo.png'%}" alt="logo" class="logo-img"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  PRODUCTOS
-                </a>
-                <ul class="dropdown-menu" style="font-size: 25px;">
-                  <li><a class="dropdown-item" href="mancuernas.html">Mancuernas</a></li>
-                  <li><a class="dropdown-item" href="barrasolimpicas.html">Barras Olímpicas</a></li>
-                  <li><a class="dropdown-item" href="discosolimpicos.html">Discos Olímpicos</a></li>
-                  <li><a class="dropdown-item" href="maquinas.html">Máquinas Cardio</a></li>
-                  <li><a class="dropdown-item" href="bancasyracks.html">Bancas y Racks</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active text-black" aria-current="page" href="mantenciones.html">MANTENCIONES</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active text-black" aria-current="page" href="asesoramiento.html">ASESORAMIENTO</a>
-              </li>
-              <!--Carrito no funcional, solo contemplativo-->
-              <li class="nav-item">
-                <a class="nav-link active text-black" aria-current="page" href="#" alt="" class="micarrito"><i class="fa-solid fa-cart-shopping" style="margin-right: 4px;"></i>MI CARRITO</a>
-              </li>
-            </ul>
-            <div class="navbar-nav ms-auto">
-              <button class="logged-out btn btn-outline-light" style="font-size: 25px; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#signinModal">INICIAR SESIÓN</button>
-              <button class="logged-out btn btn-outline-light" style="font-size: 25px; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#signupModal">REGISTRARSE</button>
-              <button class="logged-in btn btn-outline-light" style="font-size: 25px;" id="logout" >CERRAR SESIÓN</button>
-            </div>
-        </div>
-      </nav>
-  </nav>
-  <div id="carouselExampleAutoplaying" class="carousel slide carosuel-fade" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active c-item">
-        <img src="{% static 'imgslider/1.jpg'%}" class="d-block w-100 c-img" alt="...">
-        <div class="carousel-caption top-0 mt-5">
-          <h1 class="mt-5 display-1 fw-bolder text-capitalize">Gym Bros Tienda</h1>
-          <p class="fs-3 text-uppercase">Encuentra lo que buscas en Gym Bros tienda artículos deportivos.</p>
-        </div>
-      </div>
-      <div class="carousel-item c-item">
-        <img src="{% static 'imgslider/2.jpg'%}" class="d-block w-100 c-img" alt="...">
-        <div class="carousel-caption top-0 mt-5">
-          <h1 class="mt-5 display-1 fw-bolder text-capitalize">Mantenciones</h1>
-          <p class="fs-3 text-uppercase">Realizamos instalaciones y mantenciones de forma personalizada.</p>
-        </div>
-      </div>
-      <div class="carousel-item c-item">
-        <img src="{% static 'imgslider/4.jpg'%}" class="d-block w-100 c-img" alt="...">
-        <div class="carousel-caption top-0 mt-5">
-          <h1 class="mt-5 display-1 fw-bolder text-capitalize">Asesoramientos</h1>
-          <p class="fs-3 text-uppercase">Realizamos asesoramiento personalizado.</p>
-        </div>
+{% block main-content %}
+<div id="carouselExampleAutoplaying" class="carousel slide carosuel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active c-item">
+      <img src="{% static 'imgslider/1.jpg'%}" class="d-block w-100 c-img" alt="...">
+      <div class="carousel-caption top-0 mt-5">
+        <h1 class="mt-5 display-1 fw-bolder text-capitalize">Gym Bros Tienda</h1>
+        <p class="fs-3 text-uppercase">Encuentra lo que buscas en Gym Bros tienda artículos deportivos.</p>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-  <div class="container">
-    <div class="row mt-5">
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-truck-fast fa-beat fa-2x"></i>
-        <h5 class="mt-2">Envío rápido</h5>
-        <p>Región de Valparaíso 24 horas</p>
-        <p>Regiones 2 a 3 días</p>
+    <div class="carousel-item c-item">
+      <img src="{% static 'imgslider/2.jpg'%}" class="d-block w-100 c-img" alt="...">
+      <div class="carousel-caption top-0 mt-5">
+        <h1 class="mt-5 display-1 fw-bolder text-capitalize">Mantenciones</h1>
+        <p class="fs-3 text-uppercase">Realizamos instalaciones y mantenciones de forma personalizada.</p>
       </div>
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-medal fa-2x"></i>
-        <h5 class="mt-2">Garantía 3 meses</h5>
-        <p>Para todos nuestros productos</p>
-      </div>
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-credit-card fa-2x"></i>
-        <h5 class="mt-2">Paga hasta en 6 cuotas</h5>
-        <p>Sin interés en todas tus compras.</p>
-      </div>
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-box fa-2x"></i>
-        <h5 class="mt-2">Envío gratis</h5>
-        <p>Por compras sobre los $150.000</p>
-      </div>
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-screwdriver-wrench fa-2x"></i>
-        <h5 class="mt-2">Mantención</h5>
-        <p>Con nuestro equipo de expertos</p>
-      </div>
-      <div class="col-md-2" style="text-align: center;">
-        <i class="fa-solid fa-comment fa-2x"></i>
-        <h5 class="mt-2">Aseoramiento</h5>
-        <p>Con nuestro equipo atentos a tus dudas</p>
+    </div>
+    <div class="carousel-item c-item">
+      <img src="{% static 'imgslider/4.jpg'%}" class="d-block w-100 c-img" alt="...">
+      <div class="carousel-caption top-0 mt-5">
+        <h1 class="mt-5 display-1 fw-bolder text-capitalize">Asesoramientos</h1>
+        <p class="fs-3 text-uppercase">Realizamos asesoramiento personalizado.</p>
       </div>
     </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-  <div class="container p-4">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <ul class="list-group posts">
-        </ul>
-      </div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-truck-fast fa-beat fa-2x"></i>
+      <h5 class="mt-2">Envío rápido</h5>
+      <p>Región de Valparaíso 24 horas</p>
+      <p>Regiones 2 a 3 días</p>
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-medal fa-2x"></i>
+      <h5 class="mt-2">Garantía 3 meses</h5>
+      <p>Para todos nuestros productos</p>
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-credit-card fa-2x"></i>
+      <h5 class="mt-2">Paga hasta en 6 cuotas</h5>
+      <p>Sin interés en todas tus compras.</p>
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-box fa-2x"></i>
+      <h5 class="mt-2">Envío gratis</h5>
+      <p>Por compras sobre los $150.000</p>
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-screwdriver-wrench fa-2x"></i>
+      <h5 class="mt-2">Mantención</h5>
+      <p>Con nuestro equipo de expertos</p>
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+      <i class="fa-solid fa-comment fa-2x"></i>
+      <h5 class="mt-2">Aseoramiento</h5>
+      <p>Con nuestro equipo atentos a tus dudas</p>
     </div>
   </div>
+</div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-white">
-        <div class="modal-header">
-          <h3>Registrarse</h3>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-5">
-          <form id="signup-form">
-
-            <label for="email">Correo:</label>
-            <input type="text" id="signup-email" class="form-control mb-3" placeholder="correo@email.com" required>
-
-            <label for="password">Contraseña:</label>
-            <input type="password" id="signup-password" class="form-control mb-3" placeholder="" required>
-
-            <button type="submit" class="btn btn-primary">Registrar</button>
-          </form>
-        </div>
-      </div>
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <ul class="list-group posts">
+      </ul>
     </div>
   </div>
+</div>
 
-  <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignin"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Iniciar Sesión</h3>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="login-form">
-            <label for="email">Correo:</label>
-            <input type="text" id="login-email" class="form-control mb-3" placeholder="correo@email.com" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="login-password" class="form-control mb-3" placeholder="" required>
-
-            <button type="submit" class="btn btn-primary w-100 mb-4">Ingresar</button>
-
-            <button type="button" class="btn btn-danger" id="googleLogin"><i class="fa-brands fa-google" style="margin-right: 4px;"></i>Google</button>
-            <button type="button" class="btn btn-primary" id="facebookLogin"><i class="fa-brands fa-facebook" style="margin-right: 4px;"></i>Facebook</button>
-            <button type="button" class="btn btn-dark" id="githubLogin"><i class="fa-brands fa-github" style="margin-right: 4px;"></i>Github</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <footer class="footer">
-    <div class="container-fluid">
-      <div class="row bg-danger">
-        <div class="col-md-3 mt-4">
-          <h4 class="text-black">Sobre Nosotros</h4>
-          <p class="text-black">En nuestra tienda nos enorgullece ofrecer una amplia variedad de productos de alta calidad para ayudarte a lograr tus metas. Ya sea que busques artículos de entrenamiento de fuerza, cardio, accesorios deportivos, nuestro catálogo cuenta con todo lo que necesitas para llevar tu entrenamiento al siguiente nivel.</p>
-        </div>
-        <div class="col-md-4 mt-4">
-          <h4 class="text-black">Contacto</h4>
-          <ul class="list-unstyled">
-            <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i> Dudas</a></li>
-            <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i> Mantenciones</a></li>
-            <li><a href="formulario.html" class="link-light"><i class="fa-regular fa-envelope"></i> Asesoramiento</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 mt-4">
-          <h4 class="text-black">Síguenos</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="link-light"><i class="fab fa-facebook link-light"></i> Facebook</a></li>
-            <li><a href="#" class="link-light"><i class="fab fa-twitter link-light"></i> Twitter</a></li>
-            <li><a href="#" class="link-light"><i class="fab fa-instagram link-light"></i> Instagram</a></li>
-          </ul>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center text-light m-4">
-            <p>&copy; 2023 GymBros. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </footer>
-  
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="./main.js" type="module"></script>
-    <script src="validaciones.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyD7WXSovGxDgYyScig3kSbUV5le1blaO-E",
-        authDomain: "gym-bros-cf1e4.firebaseapp.com",
-        projectId: "gym-bros-cf1e4",
-        storageBucket: "gym-bros-cf1e4.appspot.com",
-        messagingSenderId: "817133230214",
-        appId: "1:817133230214:web:6406684a3ca79bb90fd907"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-    </script>
-</body>
-</html>
+{% endblock main-content %}
