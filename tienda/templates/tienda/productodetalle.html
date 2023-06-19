@@ -3,7 +3,35 @@
 
 {% block main-content %}
 
-<h1>producto detalle {{pk}}</h1>
+<div class="container">
+    <div class="row flex justify-content-between">
+        <div class="img2 col-lg-5 mt-5">
+            <img src="{{producto.imagen.url}}"
+                class="imagen col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-100" alt="">
+        </div>
+        <div class="productodetalle col-lg-5 mt-5">
+            <h1 style="font-size: 45px;">{{producto.nombre}}</h1>
+            <h5 class="fw-bold">${{producto.precio}}</h5>
+            <br><br>
+            <h5>DESCRIPCIÓN</h5>
+            <ul class="fs-5">
+                <li>{{producto.desc}}</li>
 
+            </ul>
+            <div class="button row flex">
+                <button type="submit"
+                    class="d-grid gap-2 btn1 btn btn btn-primary p-1 m-1 btn-lg text-decoration-none text-white">Añadir
+                    al carro</button>
+                <div type="submit" class="btn btn btn-success p-1 m-1 btn-lg text-white"><a href=""
+                        class="text-decoration-none text-white">Comprar Ahora</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
 
 {% endblock main-content %}

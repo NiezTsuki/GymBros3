@@ -44,40 +44,40 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-black" aria-current="page" href="mantenciones.html">MANTENCIONES</a>
+                    <a class="nav-link active text-black" aria-current="page" href="{% url 'mantenciones' %}">MANTENCIONES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-black" aria-current="page"
-                        href="asesoramiento.html">ASESORAMIENTO</a>
+                        href="{% url 'asesoramiento' %}">ASESORAMIENTO</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown mx-2">
+                    <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">USUARIO</a>
+                    <ul class="dropdown-menu" style="font-size: 18px;" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                        <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+    
+                <li class="nav-item mx-2">
+                    <a href="#" class="nav-link text-black">CARRO 4</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a href="#" class="nav-link text-black">LISTA DE DESESOS 4</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a href="#" class="nav-link text-black">INICIAR SESIÓN</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a href="#" class="nav-link text-black">REGISTRARSE</a>
                 </li>
             </ul>
         </div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown mx-2">
-                <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">USUARIO</a>
-                <ul class="dropdown-menu" style="font-size: 18px;" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Pedidos</a></li>
-                    <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item mx-2">
-                <a href="#" class="nav-link text-black">CARRO 4</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a href="#" class="nav-link text-black">LISTA DE DESESOS 4</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a href="#" class="nav-link text-black">INICIAR SESIÓN</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a href="#" class="nav-link text-black">REGISTRARSE</a>
-            </li>
-        </ul>
-
     </div>
 </nav>
 
@@ -127,7 +127,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./main.js" type="module"></script>
-    <script src="validaciones.js"></script>
+    <script src="{% static './js/validaciones.js'%}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
