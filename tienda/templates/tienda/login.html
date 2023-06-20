@@ -6,18 +6,18 @@
 <div class="container">
     <div class="row my-3">
         <div class="col-sm-6 offset-sm-3">
-            <h3>Registro Cliente</h3>
+            <h3>Iniciar Sesión</h3>
             <hr>
-
             <form action="" method="post" novalidate class="shadow p-5">
                 {% csrf_token %}
                 {% for fm in form %}
                 {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
                 {% endfor %}
-                <input type="submit" value="Registrar" class="btn btn-primary"> <br>
 
-                <div class="text-center text-primary fw-bold">
-                    <small>Ya estas Registrado? <a href="{% url 'login' %}" class="text-danger">Iniciar Sesión</a></small>
+                <small><a href="#"></a>Olvido su Contraseña</small>
+                <input type="submit" class="btn btn-primary mt-4" value="Entrar">
+                <div class="text-center text-primary fw-bold"><small>Nuevo Usuario? <a
+                            href="{% url 'registrocliente' %}" class="text-danger">Crear una Cuenta</a></small>
                 </div>
 
                 {% if form.non_field_errors %}
@@ -25,16 +25,10 @@
                         <p class="alert alert-danger my-3">{{error}}</p>
                     {% endfor %}
                 {% endif %}
-                {% if messages %}
-                    {% for msg in messages %}
-                        <div class="alert alert-{{msg.tags}}" role="alert">
-                            {{msg}}
-                        </div>
-                    {% endfor %}
-                {% endif %}
             </form>
         </div>
     </div>
 </div>
+
 
 {% endblock main-content %}
