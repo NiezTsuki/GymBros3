@@ -2,7 +2,7 @@ from django.db.models import Count
 from .models import Producto
 from django.shortcuts import render
 from django.views import View
-from . forms import FormularioRegistroCliente
+from . forms import FormularioRegistroCliente, CustomerProfileForm
 from django.contrib import messages
 
 # Create your views here.
@@ -44,3 +44,9 @@ class registroClienteView(View):
             messages.warning(request,"Error al Registrar")
         return render(request, 'tienda/registrocliente.html', locals())
             
+class ProfileView(View):
+    def get(self,request):
+        form = CustomerProfileForm()
+        return render(request, 'tienda/profile.html', locals())
+    def post(self,request):
+        return render(request, 'tienda/profile.html', locals())

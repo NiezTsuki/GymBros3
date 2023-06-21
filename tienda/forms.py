@@ -1,6 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm
 from django.contrib.auth.models import User
+
+from .models import Cliente
 
 
 class LoginForm(AuthenticationForm):
@@ -16,3 +18,18 @@ class FormularioRegistroCliente(UserCreationForm):
     class Meta:
         model= User
         fields = ['username', 'email', 'password1', 'password2']
+
+class MyPasswordResetForm(PasswordChangeForm):
+    pass
+
+class CustomerProfileForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['nombre', 'region', 'ciudad', 'celular']
+        widgets = {
+            'nombre':forms.TextInput(attrs={'class': 'form-control'}),
+            'region':forms.Select(attrs={'class': 'form-control'}),
+            'ciudad':forms.TextInput(attrs={'class': 'form-control'}),
+            'celular':forms.NumberInput(attrs={'class' : 'form-control'}),
+        }
+

@@ -14,7 +14,7 @@
                 {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
                 {% endfor %}
 
-                <small><a href="#"></a>Olvido su Contraseña</small>
+                <small><a href="{% url 'password_reset' %}">Olvido su Contraseña?</a></small> <br>
                 <input type="submit" class="btn btn-primary mt-4" value="Entrar">
                 <div class="text-center text-primary fw-bold"><small>Nuevo Usuario? <a
                             href="{% url 'registrocliente' %}" class="text-danger">Crear una Cuenta</a></small>

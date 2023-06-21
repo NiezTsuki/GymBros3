@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,6 +11,22 @@ CATEGORY_CHOICES=(
     ('BR', 'Bancas y Racks'),
 )
 
+REGION_CHOICES = (
+    ('RM', 'Región Metropolitana de Santiago'), 
+    ('I', 'Región de Tarapacá'), 
+    ('II', 'Región de Antofagasta'),
+    ('III', 'Región de Atacama'), 
+    ('IV', 'Región de Coquimbo'), 
+    ('V', 'Región de Valparaíso'), 
+    ('VI', 'Región del Libertador Bernardo OHiggins'), 
+    ('VII', 'Región del Maule'), 
+    ('VIII', 'Región del Bío Bío'), 
+    ('IX', 'Región de la Araucanía'), 
+    ('X', 'Región de los Lagos'), 
+    ('XI', 'Región de Aysén del General Carlos Ibáñez del Campo'), 
+    ('XII', 'Región de Magallanes y la Antártica Chilena'), 
+    ('XIV', 'Región de Los Ríos'), 
+    ('XV', 'Región de Arica-Parinacota'))
 
 class Producto(models.Model):
 
@@ -25,4 +42,12 @@ class Producto(models.Model):
         texto = "{0} ({1})"
         return texto.format(self.nombre, self.desc, self.precio, self.imagen)
 
-    
+class Cliente(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    nombre  = models.CharField(max_length=200)
+    region  = models.CharField(choices=REGION_CHOICES, max_length=50)
+    ciudad  = models.CharField(max_length=50)
+    celular = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.nombre
