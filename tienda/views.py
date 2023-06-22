@@ -1,6 +1,6 @@
 from django.db.models import Count
 from .models import Cliente, Producto
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from . forms import FormularioRegistroCliente, CustomerProfileForm
 from django.contrib import messages
@@ -52,13 +52,14 @@ class ProfileView(View):
     def post(self,request):
         form = CustomerProfileForm(request.POST)
         if form.is_valid():
-            usuario = request.user
-            nombre  = form.cleaned_data['nombre']
-            region  = form.cleaned_data['region']
-            ciudad  = form.cleaned_data['ciudad']
-            celular = form.cleaned_data['celular']
+            usuario   = request.user
+            nombre    = form.cleaned_data['nombre']
+            region    = form.cleaned_data['region']
+            ciudad    = form.cleaned_data['ciudad']
+            celular   = form.cleaned_data['celular']
+            direccion = form.cleaned_data['direccion']
 
-            reg = Cliente(usuario=usuario, nombre=nombre, region=region, ciudad=ciudad, celular=celular)
+            reg = Cliente(usuario=usuario, nombre=nombre, region=region, ciudad=ciudad, celular=celular, direccion=direccion)
             reg.save()
             messages.success(request, "Perfil Guardado Exitosamente!")
         else:
@@ -68,3 +69,25 @@ class ProfileView(View):
 def Direccion(request):
     add = Cliente.objects.filter(usuario=request.user)
     return render(request, 'tienda/direccion.html', locals())
+
+
+
+class UpdateDireccion(View):
+    def get(self,request,pk):
+        add  = Cliente.objects.get(pk=pk)
+        form = CustomerProfileForm(instance=add)
+        return render(request, 'tienda/actualizardireccion.html', locals())
+    def post(self,request,pk):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            add           = Cliente.objects.get(pk=pk)
+            add.nombre    = form.cleaned_data['nombre']
+            add.region    = form.cleaned_data['region']
+            add.ciudad    = form.cleaned_data['ciudad']
+            add.celular   = form.cleaned_data['celular']
+            add.direccion = form.cleaned_data['direccion']
+            add.save()
+            messages.success(request, "Perfil Guardado Exitosamente!")
+        else:
+            messages.warning(request, "Error al Guardar!")
+        return redirect('direccion')

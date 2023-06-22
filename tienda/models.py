@@ -31,7 +31,7 @@ REGION_CHOICES = (
 class Producto(models.Model):
 
     id_producto      = models.CharField(primary_key=True, max_length=10)
-    nombre           = models.CharField(max_length=20)
+    nombre           = models.CharField(max_length=50)
     desc             = models.CharField(max_length=250)
     precio           = models.CharField(max_length=10)
     categoria        = models.CharField(choices=CATEGORY_CHOICES, max_length=2)  
@@ -43,11 +43,12 @@ class Producto(models.Model):
         return texto.format(self.nombre, self.desc, self.precio, self.imagen)
 
 class Cliente(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    nombre  = models.CharField(max_length=200)
-    region  = models.CharField(choices=REGION_CHOICES, max_length=50)
-    ciudad  = models.CharField(max_length=50)
-    celular = models.IntegerField(default=0)
+    usuario   = models.ForeignKey(User, on_delete=models.CASCADE)
+    nombre    = models.CharField(max_length=200)
+    region    = models.CharField(choices=REGION_CHOICES, max_length=200)
+    ciudad    = models.CharField(max_length=50)
+    celular   = models.IntegerField(default=0)
+    direccion = models.CharField(max_length=200)
 
     def __str__(self):
         return self.nombre

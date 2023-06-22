@@ -18,6 +18,11 @@ class FormularioRegistroCliente(UserCreationForm):
     class Meta:
         model= User
         fields = ['username', 'email', 'password1', 'password2']
+    
+class MyPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label='Contraseña Antigua', widget=forms.PasswordInput(attrs={'autofoucs' : 'True', 'autocomplete' : 'current-password', 'class' : 'form-control'}))
+    new_password1 = forms.CharField(label='Nueva Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+    new_password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
 
 class MyPasswordResetForm(PasswordChangeForm):
     pass
@@ -25,11 +30,12 @@ class MyPasswordResetForm(PasswordChangeForm):
 class CustomerProfileForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ['nombre', 'region', 'ciudad', 'celular']
+        fields = ['nombre', 'region', 'ciudad', 'celular', 'direccion']
         widgets = {
             'nombre':forms.TextInput(attrs={'class': 'form-control'}),
             'region':forms.Select(attrs={'class': 'form-control'}),
             'ciudad':forms.TextInput(attrs={'class': 'form-control'}),
             'celular':forms.NumberInput(attrs={'class' : 'form-control'}),
+            'direccion' :forms.TextInput(attrs={'class' : 'form-control'}),
         }
 

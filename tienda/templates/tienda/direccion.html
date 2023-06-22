@@ -24,7 +24,8 @@
                             <p>Región: {{ad.region}}</p>
                             <p>Ciudad: {{ad.ciudad}}</p>
                             <p>Celular: {{ad.celular}}</p>
-                            <p class="text-center"><a href="#" type="button" class="btn btn-success">Actualizar</a></p>
+                            <p>Dirección :{{ad.direccion}}</p>
+                            <p class="text-center"><a href="{% url 'actualizardireccion' pk=ad.id %}" type="button" class="btn btn-success">Actualizar</a></p>
                         </div>
                     </div>
                 </div>
