@@ -2,7 +2,7 @@ from django.db.models import Count
 from .models import Cliente, Producto
 from django.shortcuts import render, redirect
 from django.views import View
-from . forms import FormularioRegistroCliente, CustomerProfileForm
+from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm
 from django.contrib import messages
 
 # Create your views here.
@@ -87,7 +87,7 @@ class UpdateDireccion(View):
             add.celular   = form.cleaned_data['celular']
             add.direccion = form.cleaned_data['direccion']
             add.save()
-            messages.success(request, "Perfil Guardado Exitosamente!")
+            messages.success(request, "Perfil Actualizado Exitosamente!")
         else:
             messages.warning(request, "Error al Guardar!")
         return redirect('direccion')

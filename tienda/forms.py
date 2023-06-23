@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, SetPasswordForm, PasswordResetForm
 from django.contrib.auth.models import User
 
 from .models import Cliente
@@ -22,10 +22,16 @@ class FormularioRegistroCliente(UserCreationForm):
 class MyPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label='Contraseña Antigua', widget=forms.PasswordInput(attrs={'autofoucs' : 'True', 'autocomplete' : 'current-password', 'class' : 'form-control'}))
     new_password1 = forms.CharField(label='Nueva Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
-    new_password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+    new_password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))  
 
-class MyPasswordResetForm(PasswordChangeForm):
-    pass
+
+class MySetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(label='Nueva Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+    new_password2 = forms.CharField(label='Confirme Nueva Contraseña', widget=forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-control'}))
+
+
+class MyPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
 
 class CustomerProfileForm(forms.ModelForm):
     class Meta:
