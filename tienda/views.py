@@ -1,5 +1,5 @@
 from django.db.models import Count
-from .models import Cliente, Producto
+from .models import Cliente, Producto, Carro
 from django.shortcuts import render, redirect
 from django.views import View
 from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm
@@ -91,3 +91,15 @@ class UpdateDireccion(View):
         else:
             messages.warning(request, "Error al Guardar!")
         return redirect('direccion')
+
+def add_to_cart(request):
+    user = request.user
+    id_producto = request.GET.get('prod_id')
+    producto = Producto.objects.get(id=id_producto)
+    Carro(user=user, producto=producto).save()
+    return redirect("/cart")
+
+def show_cart(request):
+    user = request.user
+    cart = Carro.objects.filter(user=user)
+    return render(request, 'tienda/addtocart.html',locals())

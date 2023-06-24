@@ -16,6 +16,9 @@ urlpatterns=[
     path("profile/", views.ProfileView.as_view(), name='profile'),
     path("direccion/", views.Direccion, name='direccion'),
     path("actualizardireccion/<int:pk>", views.UpdateDireccion.as_view(), name='actualizardireccion'),
+    path('add-to-cart/', views.add_to_cart, name ='add-to-cart'),
+    path('cart/', views.show_cart, name='show-cart'),
+    path('checkout/', views.show_cart, name='checkout'),
 
     #login autentificacion
 

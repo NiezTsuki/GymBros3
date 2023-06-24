@@ -17,9 +17,17 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="{% static './img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'css/loader.css'%}">
 
 
 </head>
+
+<div class="spinner-loader">
+    <div class="spinner-border text-danger" role="status" style="height: 60px; width: 60px;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>   
+
 <nav class="navbar navbar-expand-lg bg-danger fuente" style="font-size: 23px;">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png'%}" alt="logo" width="120"
@@ -53,7 +61,8 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-right mb-2 mb-lg-0">
+                {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown mx-2">
                     <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">USUARIO</a>
@@ -64,24 +73,24 @@
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     </ul>
                 </li>
-
                 <li class="nav-item mx-2">
-                    <a href="#" class="nav-link text-black">CARRO 4</a>
+                    <a href="#" class="nav-link text-black btn btn-outline-light">CARRO 4</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="#" class="nav-link text-black">LISTA DE DESESOS 4</a>
+                    <a href="#" class="nav-link text-black btn btn-outline-light">LISTA DE DESESOS 4</a>
+                </li>
+                {% else %}
+                <li class="nav-item mx-2">
+                    <a href="{% url 'login' %}" class="logged-out btn btn-outline-light " style="font-size: 23px;">INICIAR SESIÓN</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="{% url 'login' %}" class="nav-link text-black">INICIAR SESIÓN</a>
+                    <a href="{% url 'registrocliente' %}" class="logged-out btn btn-outline-light" style="font-size: 23px;">REGISTRARSE</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a href="{% url 'registrocliente' %}" class="nav-link text-black">REGISTRARSE</a>
-                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-
 
 {% block main-content %}{% endblock main-content %}
 
@@ -170,7 +179,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="{% static './js/notificaciones.js'%}"></script>
+<script src="{% static './js/loader.js'%}"></script>
 <script src="{% static './js/validaciones.js'%}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
@@ -194,5 +203,4 @@
 {% block js%}
 {% endblock %}
 </body>
-
 </html>

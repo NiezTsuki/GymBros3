@@ -52,3 +52,12 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+class Carro(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+
+    @property
+    def costo_total(self):
+        return self.cantidad * self.producto.precio

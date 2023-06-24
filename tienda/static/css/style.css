@@ -1,37 +1,5 @@
-
 .fuente {
   font-family: "Anton", sans-serif;
-}
-
-.footer {
-  position: relative;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-footer {
-  margin-top: auto;
-}
-
-.micarrito {
-  width: 30px;
-}
-
-col {
-  display: flex;
-  align-items: center;
-}
-
-.contenedor {
-  text-align: center;
 }
 
 .c-item {
@@ -64,5 +32,3 @@ col {
 .card {
   height: -100;
 }
-
-/*# sourceMappingURL=style.css.map */

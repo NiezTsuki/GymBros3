@@ -16,22 +16,14 @@
             <h5>DESCRIPCIÓN</h5>
             <ul class="fs-5">
                 <li>{{producto.desc}}</li>
-
             </ul>
-            <div class="button row flex">
-                <button type="submit"
-                    class="d-grid gap-2 btn1 btn btn btn-primary p-1 m-1 btn-lg text-decoration-none text-white">Añadir
-                    al carro</button>
-                <div type="submit" class="btn btn btn-success p-1 m-1 btn-lg text-white"><a href=""
-                        class="text-decoration-none text-white">Comprar Ahora</a>
-                </div>
-            </div>
-
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{producto.id_producto}}">
+                    <button type="submit" class="btn btn-primary shadow px-5 py-2">Añadir al carro</button>
+                </form>
+                <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
         </div>
-
     </div>
-
-
 </div>
 
 {% endblock main-content %}
