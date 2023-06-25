@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-def index(request):
+def home(request):
     return render(request,'tienda/index.html')
 
 def mantenciones(request):

@@ -17,11 +17,11 @@
             <ul class="fs-5">
                 <li>{{producto.desc}}</li>
             </ul>
-                <form action="/add-to-cart" class="d-inline">
-                    <input type="hidden" name="prod_id" value="{{producto.id_producto}}">
-                    <button type="submit" class="btn btn-primary shadow px-5 py-2">Añadir al carro</button>
-                </form>
-                <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
+            <form action="/add-to-cart" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{producto.id_producto}}" />
+                <button type="submit" class="btn btn-primary shadow px-5 py-2">Añadir al carro</button>
+            </form>
+            <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
         </div>
     </div>
 </div>
