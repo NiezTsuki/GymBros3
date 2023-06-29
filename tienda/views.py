@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from django.views import View
 from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm
 from django.contrib import messages
-
 # Create your views here.
 
 def home(request):
