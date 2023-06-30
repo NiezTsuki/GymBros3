@@ -1,0 +1,61 @@
+{% extends "tienda/base.html" %}
+{% load static %}
+
+{% block main-content %}
+
+<div class="container mt-4">
+    <h1>Carrito de Compras</h1>
+
+    {% if carros %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for carro in carros %}
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ carro.producto.imagen.url }}" alt="{{ carro.producto.nombre }}" class="img-thumbnail" style="width: 100px;">
+                            <span class="ms-3">{{ carro.producto.nombre }}</span>
+                        </div>
+                    </td>
+                    <td>$ {{ carro.producto.precio}}</td>
+                    <td>{{ carro.cantidad }}</td>
+                    <td>$ {{ carro.subtotal }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_producto_carro' carro.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td>$ {{ total }}</td>
+                    <td><form method="post" action="{#}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">Realizar Compra</button>
+                    </form></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form method="post" action="#">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+    {% else %}
+    <p>No hay productos en el carrito.</p>
+    {% endif %}
+</div>
+
+{% endblock main-content %}
+
+

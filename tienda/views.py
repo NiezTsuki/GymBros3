@@ -1,9 +1,12 @@
 from django.db.models import Count
 from .models import Cliente, Producto, Carro
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm
+from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm, AgregarProductoForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 def home(request):
@@ -91,14 +94,46 @@ class UpdateDireccion(View):
             messages.warning(request, "Error al Guardar!")
         return redirect('direccion')
 
-def add_to_cart(request):
-    user = request.user
-    id_producto = request.GET.get('prod_id')
-    producto = Producto.objects.get(id=id_producto)
-    Carro(user=user, producto=producto).save()
-    return redirect("/cart")
+def carro_compras(request):
+    carros = Carro.objects.filter(usuario=request.user)
+    total = 0
+    for carro in carros:
+        subtotal = carro.cantidad * int(carro.producto.precio)
+        total += subtotal
+        carro.subtotal = subtotal  # Agregamos el subtotal al objeto carro
 
-def show_cart(request):
-    user = request.user
-    cart = Carro.objects.filter(user=user)
-    return render(request, 'tienda/addtocart.html',locals())
+    return render(request, 'tienda/carro_compras.html', {'carros': carros, 'total': total})
+
+def agregar_producto_carro(request, producto_id):
+    producto = get_object_or_404(Producto, id_producto=producto_id)
+    cantidad = int(request.POST.get('cantidad', 1))  # Obtener la cantidad del formulario
+    carro, created = Carro.objects.get_or_create(usuario=request.user, producto=producto)
+    if not created:
+        carro.cantidad += cantidad  # Incrementar la cantidad en función de lo ingresado
+        carro.save()
+    return redirect('carro_compras')
+
+
+def eliminar_producto_carro(request, carro_id):
+    carro = get_object_or_404(Carro, id=carro_id)
+    if carro.cantidad > 1:
+        carro.cantidad -= 1
+        carro.save()
+    else:
+        carro.delete()
+    return redirect('carro_compras')
+
+
+def mi_vista_del_nav(request):
+    if request.user.is_authenticated:
+        carros = Carro.objects.filter(usuario=request.user)
+        cantidad_productos = carros.count()
+        print("Cantidad de productos en el carrito:", cantidad_productos)
+    else:
+        cantidad_productos = 0
+
+    return render(request, 'tienda/base.html', {'cantidad_productos': cantidad_productos})
+
+
+
+

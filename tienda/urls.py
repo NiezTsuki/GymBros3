@@ -5,6 +5,7 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_view
 from .forms import LoginForm, MyPasswordResetForm, MyPasswordChangeForm, MySetPasswordForm
+from .views import carro_compras, agregar_producto_carro, eliminar_producto_carro
 
 urlpatterns=[
     path("index",views.home, name='index'),
@@ -17,9 +18,9 @@ urlpatterns=[
     path("direccion/", views.Direccion, name='direccion'),
     path("actualizardireccion/<int:pk>", views.UpdateDireccion.as_view(), name='actualizardireccion'),
     
-    path('add-to-cart/', views.add_to_cart, name ='add-to-cart'),
-    path('cart/', views.show_cart, name='showcart'),
-    path('checkout/', views.show_cart, name='checkout'),
+    path('carro/', carro_compras, name='carro_compras'),
+    path('carro/agregar/<int:producto_id>/', agregar_producto_carro, name='agregar_producto_carro'),
+    path('carro/eliminar/<int:carro_id>/', views.eliminar_producto_carro, name='eliminar_producto_carro'),
 
     #login autentificacion
 

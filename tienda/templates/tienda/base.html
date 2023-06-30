@@ -68,16 +68,12 @@
                         data-bs-toggle="dropdown" aria-expanded="false">USUARIO</a>
                     <ul class="dropdown-menu" style="font-size: 18px;" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="{% url 'profile' %}">Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Pedidos</a></li>
                         <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Cambiar Contraseña</a></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                     </ul>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="#" class="nav-link text-black">CARRO 4</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-link text-black">LISTA DE DESESOS 4</a>
+                    <a href="" class="nav-link text-black">CARRO {{ cantidad_productos }}</a>
                 </li>
                 {% else %}
                 <li class="nav-item mx-2">

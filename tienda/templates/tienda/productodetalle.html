@@ -17,14 +17,13 @@
             <ul class="fs-5">
                 <li>{{producto.desc}}</li>
             </ul>
-            <form action="/add-to-cart" class="d-inline">
-                <input type="hidden" name="prod_id" value="{{producto.id_producto}}" />
-                <button type="submit" class="btn btn-primary shadow px-5 py-2">Añadir al carro</button>
+            <form method="post" action="{% url 'agregar_producto_carro' producto.id_producto %}">
+                {% csrf_token %}
+                <input  type="number" style="width:50px; height: 40px;" name="cantidad" value="1" min="1" required>
+                <button type="submit" class="btn btn-primary shadow px-5 py-2">Agregar al carrito</button>
             </form>
-            <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
         </div>
     </div>
 </div>
 
 {% endblock main-content %}
-

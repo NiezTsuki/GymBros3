@@ -33,7 +33,7 @@ class Producto(models.Model):
     id_producto      = models.CharField(primary_key=True, max_length=10)
     nombre           = models.CharField(max_length=50)
     desc             = models.CharField(max_length=250)
-    precio           = models.CharField(max_length=10)
+    precio           = models.IntegerField()
     categoria        = models.CharField(choices=CATEGORY_CHOICES, max_length=2)  
     imagen           = models.ImageField(upload_to="productos", null=True)
 

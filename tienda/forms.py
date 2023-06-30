@@ -45,3 +45,7 @@ class CustomerProfileForm(forms.ModelForm):
             'direccion' :forms.TextInput(attrs={'class' : 'form-control'}),
         }
 
+
+class AgregarProductoForm(forms.Form):
+    producto_id = forms.CharField(label='ID del producto')
+    cantidad = forms.IntegerField(label='Cantidad')
