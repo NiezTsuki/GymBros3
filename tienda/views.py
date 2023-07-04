@@ -6,6 +6,7 @@ from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm, A
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -97,43 +98,53 @@ class UpdateDireccion(View):
 def carro_compras(request):
     carros = Carro.objects.filter(usuario=request.user)
     total = 0
+    cantidad_productos = 0
     for carro in carros:
         subtotal = carro.cantidad * int(carro.producto.precio)
         total += subtotal
         carro.subtotal = subtotal  # Agregamos el subtotal al objeto carro
+        cantidad_productos += carro.cantidad
 
-    return render(request, 'tienda/carro_compras.html', {'carros': carros, 'total': total})
+    context = {
+        'carros': carros,
+        'total': total,
+        'cantidad_productos': cantidad_productos,
+        'cantidad_productos_carro': request.session.get('cantidad_productos_carro', 0)
+    }
+
+    return render(request, 'tienda/carro_compras.html', context)
+
 
 def agregar_producto_carro(request, producto_id):
     producto = get_object_or_404(Producto, id_producto=producto_id)
-    cantidad = int(request.POST.get('cantidad', 1))  # Obtener la cantidad del formulario
-    carro, created = Carro.objects.get_or_create(usuario=request.user, producto=producto)
-    if not created:
-        carro.cantidad += cantidad  # Incrementar la cantidad en función de lo ingresado
+    cantidad = int(request.POST.get('cantidad', 1))
+
+    try:
+        carro = Carro.objects.get(usuario=request.user, producto=producto)
+        carro.cantidad += cantidad
         carro.save()
+    except Carro.DoesNotExist:
+        carro = Carro.objects.create(usuario=request.user, producto=producto, cantidad=cantidad)
+
+    # Actualizar la variable de sesión
+    request.session['cantidad_productos_carro'] = Carro.objects.filter(usuario=request.user).count()
+
     return redirect('carro_compras')
 
 
 def eliminar_producto_carro(request, carro_id):
     carro = get_object_or_404(Carro, id=carro_id)
-    if carro.cantidad > 1:
-        carro.cantidad -= 1
-        carro.save()
-    else:
-        carro.delete()
+    carro.delete()
+    
+    # Actualizar la variable de sesión
+    request.session['cantidad_productos_carro'] = Carro.objects.filter(usuario=request.user).count()
+
     return redirect('carro_compras')
 
 
-def mi_vista_del_nav(request):
-    if request.user.is_authenticated:
-        carros = Carro.objects.filter(usuario=request.user)
-        cantidad_productos = carros.count()
-        print("Cantidad de productos en el carrito:", cantidad_productos)
-    else:
-        cantidad_productos = 0
-
-    return render(request, 'tienda/base.html', {'cantidad_productos': cantidad_productos})
-
+def cantidad_productos_carro(request):
+    cantidad_productos_carro = Carro.objects.filter(usuario=request.user).count()
+    return {'cantidad_productos_carro': cantidad_productos_carro}
 
 
 

@@ -68,3 +68,28 @@ col {
 .card {
   height: -100;
 }
+
+.producto-cuadro {
+  position: relative;
+}
+
+.zoom-container {
+  overflow: hidden;
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(0.9);
+  /* Ajusta el valor de "scale" según tu preferencia para el nivel de zoom */
+  z-index: 1; /* Asegura que la imagen ampliada esté por encima del contenido */
+}
+
+/* Agrega estilos para el nombre del producto */
+.producto-cuadro .fw-bold {
+  position: relative;
+  z-index: 2; /* Asegura que el nombre del producto esté por encima de la imagen ampliada */
+}
+

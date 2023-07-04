@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-sm-9"></div>
         <div class="row">
-            {% for prod in producto%}
-            <div class="col text-center mb-4">
-                <a href="{% url 'productodetalle' prod.id_producto%}" class="btn">
-                    <div>
-                        <img src="{{prod.imagen.url}}" width="300px" height="300px">
-                        <div class="fw-bold">{{prod.nombre}}</div>
-                        <small class="fw-bold">${{prod.precio}}</small>
+            {% for prod in producto %}
+            <div class="col text-center mb-4 producto-cuadro">
+                <a href="{% url 'productodetalle' prod.id_producto %}" class="btn">
+                    <div class="zoom-container">
+                        <img src="{{ prod.imagen.url }}" width="300px" height="300px" class="zoom-image">
+                        <div class="fw-bold">{{ prod.nombre }}</div>
+                        <small class="fw-bold">${{ prod.precio }}</small>
                     </div>
                 </a>
             </div>
