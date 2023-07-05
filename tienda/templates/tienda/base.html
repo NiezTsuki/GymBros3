@@ -16,8 +16,8 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="{% static './img/favicon.png'%}">
-    <link rel="stylesheet" href="{% static 'css/loader.css'%}">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script
         src="https://www.paypal.com/sdk/js?client-id=ATQG83YvNv0RSuJ2hxYdrPilKcA8U7htchmWo1e7Xp5v2oblKNVgQhgA0CiPlvKDJ-vy7UbrfcPj0YfJ"></script>
 
@@ -28,7 +28,7 @@
     <div class="spinner-border text-danger" role="status" style="height: 60px; width: 60px;">
         <span class="visually-hidden">Loading...</span>
     </div>
-</div>
+</div>   
 
 <nav class="navbar navbar-expand-lg bg-danger fuente" style="font-size: 23px;">
     <div class="container-fluid">
@@ -76,19 +76,14 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a href="{% url 'carro_compras' %}" class="nav-link text-black">
-                        <i class="fa-solid fa-cart-shopping"></i> <span>
-                            {{ cantidad_productos_carro }}
-                        </span>
-                    </a>
+                        <i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
                 {% else %}
                 <li class="nav-item mx-2">
-                    <a href="{% url 'login' %}" class="logged-out btn btn-outline-light "
-                        style="font-size: 23px;">INICIAR SESIÓN</a>
+                    <a href="{% url 'login' %}" class="logged-out btn btn-outline-light " style="font-size: 23px;">INICIAR SESIÓN</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="{% url 'registrocliente' %}" class="logged-out btn btn-outline-light"
-                        style="font-size: 23px;">REGISTRARSE</a>
+                    <a href="{% url 'registrocliente' %}" class="logged-out btn btn-outline-light" style="font-size: 23px;">REGISTRARSE</a>
                 </li>
                 {% endif %}
             </ul>
@@ -207,5 +202,4 @@
 {% block js%}
 {% endblock %}
 </body>
-
 </html>

@@ -6,7 +6,6 @@ from . forms import FormularioRegistroCliente, CustomerProfileForm, LoginForm, A
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
 
 # Create your views here.
 
@@ -95,6 +94,7 @@ class UpdateDireccion(View):
             messages.warning(request, "Error al Guardar!")
         return redirect('direccion')
 
+@login_required
 def carro_compras(request):
     carros = Carro.objects.filter(usuario=request.user)
     total = 0
@@ -114,7 +114,7 @@ def carro_compras(request):
 
     return render(request, 'tienda/carro_compras.html', context)
 
-
+@login_required
 def agregar_producto_carro(request, producto_id):
     producto = get_object_or_404(Producto, id_producto=producto_id)
     cantidad = int(request.POST.get('cantidad', 1))
@@ -131,7 +131,7 @@ def agregar_producto_carro(request, producto_id):
 
     return redirect('carro_compras')
 
-
+@login_required
 def eliminar_producto_carro(request, carro_id):
     carro = get_object_or_404(Carro, id=carro_id)
     carro.delete()
@@ -142,9 +142,7 @@ def eliminar_producto_carro(request, carro_id):
     return redirect('carro_compras')
 
 
-def cantidad_productos_carro(request):
-    cantidad_productos_carro = Carro.objects.filter(usuario=request.user).count()
-    return {'cantidad_productos_carro': cantidad_productos_carro}
+
 
 
 
